@@ -187,3 +187,16 @@ The feature ASK_AMT has a very wide distribution of values, 75% of all values ar
 
 
 ## Model Training Analysis
+
+The model training process used the following variables to set the neural network model parameters, to set the bucketing threshold for features, to set the outlier filter threshold of the ASK_AMT feature
+* Hidden layer 1 neuron count
+* Hidden layer 1 activation function
+* Hidden layer 2 neuron count
+* Hidden layer 2 activation function
+* Hidden layer 3 neuron count
+* Hidden layer 3 activation function
+* Bucketing catigorical value row count threshold for feature APPLICATION_TYPE
+* Bucketing catigorical value row count threshold for feature CLASSIFICATION
+* Outlier filter amount threshold for the feature ASK_AMT
+
+
