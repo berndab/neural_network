@@ -186,17 +186,56 @@ The feature ASK_AMT has a very wide distribution of values, 75% of all values ar
 </table>
 
 
-## Model Training Analysis
+## Neural Network Model Predictive Performance Analysis
 
-The model training process used the following variables to set the neural network model parameters, to set the bucketing threshold for features, to set the outlier filter threshold of the ASK_AMT feature
-* Hidden layer 1 neuron count
-* Hidden layer 1 activation function
-* Hidden layer 2 neuron count
-* Hidden layer 2 activation function
-* Hidden layer 3 neuron count
-* Hidden layer 3 activation function
-* Bucketing catigorical value row count threshold for feature APPLICATION_TYPE
-* Bucketing catigorical value row count threshold for feature CLASSIFICATION
-* Outlier filter amount threshold for the feature ASK_AMT
+The model training testing program used configurable variables to set the neural network model training parameters, to set the threshold row count value for features bucketing , and to to set the outlier filter threshold for ASK_AMT feature values
+
+These variable were used to set the following model testing parameter
+* Model Parameters
+  * Hidden layer 1 neuron count
+  * Hidden layer 1 activation function
+  * Hidden layer 2 neuron count
+  * Hidden layer 2 activation function
+  * Hidden layer 3 neuron count
+  * Hidden layer 3 activation function
+  * Model training epochs
+* Feature Bucketing Parameters
+  * Bucketing row count threshold for feature APPLICATION_TYPE
+  * Bucketing row count threshold for feature CLASSIFICATION
+* Outlier filter parameters for feature ASK_AMT
+
+### Feature Bucketing
 
 The model performed best when with a low bucketing threshold for the two features APPLICATION_TYPE and CLASSIFICATION where the value only eliminated categorical values for these features that had row count in the single digits. High bucketing threshold amount that removed categorical values with row count above 100 significantly reduced the model’s accuracy.
+
+### ASK_AMOUNT Feature Outlier Filtering
+
+Any attempt to filter even the most extream outlier values lowered the accuracy performance of the machine learning model. This may be because these upper 25% or the ask amout values offer significant predictive value to the model do to their high dollar amounts
+
+### Neural Network Layer Activation Functions
+
+The most accurate model was the version that used the ReLU activation for the import and all hidden layers with the output layer using the sigmoid activation function. The tabh activation function used on in the input and hidden layers produced almost the same accuracy as using the ReLU function. All other activation function used produced a trained model with less accuracy. 
+
+### Adding Hidden Layers and Hidden Layer Neurons
+
+Adding more neurons to the hidden layer and more hidden layers continued to increase the models accuracy until it reached a pick trained accuracy of about 0.445 - 0.4470 using
+* hidden layer 1:  75 neurons
+* hidden layer 2: 150 neurons
+* hidden layr  3:  10 neurons
+
+Any additional neurons cause the model to become overfitted which was indicated by a higher training accuracy and a lower testing accuracy.
+
+### Epochs
+
+The training accuracy and testing accuracy of the model peaks when using 200 epoch to train the model. The model started to become overfit when using more than 200 epoch which was indicated by a higher training accuracy and a lower testing accuracy. 
+
+### Conclusion
+
+The peak model training accuracy that was achieved was 0.75 in some epoch executions while the peak testing accuracy that was achieved by varying the model training parameters of the model was 0.733. The accuracy of the model seems to be limited because the available features to train the model had weak predictive value. 
+
+Because of the week predictive value of the data features,  a random forest model may produce better predictive accuracy since random forest machine learning model is a weak learning model that creates many decision trees based on random subsets of the training data. The collection of randomly generated decision trees when combined may produce predictive model with a higher accuracy than the neural network model that was tested. 
+
+
+
+
+
