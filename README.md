@@ -199,4 +199,4 @@ The model training process used the following variables to set the neural networ
 * Bucketing catigorical value row count threshold for feature CLASSIFICATION
 * Outlier filter amount threshold for the feature ASK_AMT
 
-
+The model performed best when with a low bucketing threshold for the two features APPLICATION_TYPE and CLASSIFICATION where the value only eliminated categorical values for these features that had row count in the single digits. High bucketing threshold amount that removed categorical values with row count above 100 significantly reduced the model’s accuracy.
