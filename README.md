@@ -137,7 +137,7 @@ The features APPLICATION_TYPE and CLASSIFICATION have 17 and 71 unique categoric
 
 ### Feature with Potential Outliers
 
-The feature ASK_AMT has a very wide distribution of values
+The feature ASK_AMT has a very wide distribution of values, 75% of all values are amounts of $5000 dollar. Yet the mean is $2,769,198.68, the standard deviation is $87,130,452.44, and the maximum value is $8,597,806,340.00. This indicate that there of the 25% of values in the top quartile which is 8,5745 values, there is a large number of ask amount values that are in the millions and billions which skews the distribution of values for this feature. The model testing process will be designed to excludes a portion of these values in the top 25% which may be considered outliers to determine how removing these outlier values affects the accuracy of the model's prediction.
 
 <table>
    <thead>
