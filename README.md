@@ -21,11 +21,11 @@ Three Jupyter Notebooks were created
 
 ## Analysis
 
-# Feature Elimination
+### Feature Elimination
 The EIN and name fields were eliminated because they are identity field and are not consider model features. The STATUS and  SPECIAL_CONSIDERATIONS because they have no predictive value. These are  dichotomous feature where 99.99% of the data rows have a STATUS value of 1 and 99.92% of the data rows have a SPECIAL_CONSIDERATIONS	value of N. These features have no predictive value because almost 100% of the data rows have the same value. 
 
 
-# Static Features
+### Static Features
 
 The following feature have a small number of unique categorical values and therefore, do not require binning. These features’ unique categorical value will remain constant when training and testing the neural network. Therefore, they can be encoded once using one-hot encoding and stored in a file.
 
@@ -56,5 +56,36 @@ The following feature have a small number of unique categorical values and there
    </tbody>
 </table>
 
+### Binnable Features
 
+The following features have a significant amount of unique catigorical values and can be binned with differnt binning row count thresholds in order to determine how varying binning thresholds influence the accuracy of the neural network, machine learning model
+
+#### Feature APPLICATION_TYPE
+<table>
+   <thead>
+      <tr>
+         <th>Unique Categorial Value</th>
+         <th>Data Set Row Count</th>
+      </tr>
+   </thead>
+   <tbody>
+	  <tr><td>T3</td><td>27037</td></tr>
+	  <tr><td>T4</td><td>1542</td></tr>
+	  <tr><td>T6</td><td>1216</td></tr>
+	  <tr><td>T5</td><td>1173</td></tr>
+	  <tr><td>T19</td><td>1065</td></tr>
+	  <tr><td>T8</td><td>737</td></tr>
+	  <tr><td>T7</td><td>725</td></tr>
+	  <tr><td>T10</td><td>528</td></tr>
+	  <tr><td>T9</td><td>156</td></tr>
+	  <tr><td>T13</td><td>66</td></tr>
+	  <tr><td>T12</td><td>27</td></tr>
+	  <tr><td>T2</td><td>16</td></tr>
+	  <tr><td>T25</td><td>3</td></tr>
+	  <tr><td>T14</td><td>3</td></tr>
+	  <tr><td>T15</td><td>2</td></tr>
+	  <tr><td>T29</td><td>2</td></tr>
+	  <tr><td>17</td><td>1</td></tr>
+   </tbody>
+</table>
 
