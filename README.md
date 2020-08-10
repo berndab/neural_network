@@ -135,4 +135,48 @@ The features APPLICATION_TYPE and CLASSIFICATION have 17 and 71 unique categoric
    </tbody>
 </table>
 
+### Feature with Potential Outliers
+
+The feature ASK_AMT has a very wide distribution of values
+
+<table>
+   <thead>
+      <tr>
+         <th>Statistical Measure</th>
+         <th>Values</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr>
+         <td>Mean</td>
+         <td>$2,769,198.68</td>
+     </tr>
+     <tr>
+         <td>Standard Deviation</td>
+         <td>$87,130,452.44</td>
+      </tr>
+      <tr>
+         <td>Min Value</td>
+         <td>$5,000.00</td>
+      </tr>
+      <tr>
+         <td>25%</td>
+         <td>$5,000.00</td>
+      </tr>
+      <tr>
+         <td>50%</td>
+         <td>$5,000.00</td>
+      </tr>
+      <tr>
+         <td>75%</td>
+         <td>$5,000.00</td>
+      </tr>
+      <tr>
+         <td>Max</td>
+         <td>$8,597,806,340.00</td>
+      </tr>
+   </tbody>
+</table>
+
+
 ## Model Training Analysis
