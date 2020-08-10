@@ -58,13 +58,13 @@ The following feature have a small number of unique categorical values and there
 
 ### Binnable Features
 
-The following features have a significant amount of unique catigorical values and can be binned with differnt binning row count thresholds in order to determine how varying binning thresholds influence the accuracy of the neural network, machine learning model
+The features APPLICATION_TYPE and CLASSIFICATION have 17 and 71 unique categorical values respectively and have categorical values with low row counts. Therefore, these features are candidates for binning. Binning row count thresholds variables are created in the model training and testing workbook to enable vary the number of feature categories that are updated to the “Other” and to determine how the varying the binning threshold influences the accuracy of the neural network, machine learning model.
 
 #### Feature APPLICATION_TYPE
 <table>
    <thead>
       <tr>
-         <th>Unique Categorial Value</th>
+         <th>Unique Categorial Value (17)</th>
          <th>Data Set Row Count</th>
       </tr>
    </thead>
@@ -89,3 +89,89 @@ The following features have a significant amount of unique catigorical values an
    </tbody>
 </table>
 
+#### Feature CLASSIFICATION
+
+
+<table>
+   <thead>
+      <tr>
+         <th>Unique Classifier</th>
+         <th>Row Count</th>
+      </tr>
+   </thead>
+   <tbody>
+	  <tr><td>C1000</td><td>17326</td></tr>
+	  <tr><td>C2000</td><td>6074</td></tr>
+	  <tr><td>C1200</td><td>4837</td></tr>
+	  <tr><td>C3000</td><td>1918</td></tr>
+	  <tr><td>C2100</td><td>1883</td></tr>
+	  <tr><td>C7000</td><td>777</td></tr>
+	  <tr><td>C1700</td><td>287</td></tr>
+	  <tr><td>C4000</td><td>194</td></tr>
+	  <tr><td>C5000</td><td>116</td></tr>
+	  <tr><td>C1270</td><td>114</td></tr>
+	  <tr><td>C2700</td><td>104</td></tr>
+	  <tr><td>C2800</td><td>95</td></tr>
+	  <tr><td>C7100</td><td>75</td></tr>
+	  <tr><td>C1300</td><td>58</td></tr>
+	  <tr><td>C1280</td><td>50</td></tr>
+	  <tr><td>C1230</td><td>36</td></tr>
+	  <tr><td>C1400</td><td>34</td></tr>
+	  <tr><td>C2300</td><td>32</td></tr>
+	  <tr><td>C7200</td><td>32</td></tr>
+	  <tr><td>C1240</td><td>30</td></tr>
+	  <tr><td>C8000</td><td>20</td></tr>
+	  <tr><td>C7120</td><td>18</td></tr>
+	  <tr><td>C1500</td><td>16</td></tr>
+	  <tr><td>C6000</td><td>15</td></tr>
+	  <tr><td>C1800</td><td>15</td></tr>
+	  <tr><td>C1250</td><td>14</td></tr>
+	  <tr><td>C8200</td><td>11</td></tr>
+	  <tr><td>C1238</td><td>10</td></tr>
+	  <tr><td>C1278</td><td>10</td></tr>
+	  <tr><td>C1237</td><td>9</td></tr>
+	  <tr><td>C1235</td><td>9</td></tr>
+	  <tr><td>C7210</td><td>7</td></tr>
+	  <tr><td>C1720</td><td>6</td></tr>
+	  <tr><td>C2400</td><td>6</td></tr>
+	  <tr><td>C4100</td><td>6</td></tr>
+	  <tr><td>C1600</td><td>5</td></tr>
+	  <tr><td>C1257</td><td>5</td></tr>
+	  <tr><td>C0   </td><td>3</td></tr>
+	  <tr><td>C2710</td><td>3</td></tr>
+	  <tr><td>C1260</td><td>3</td></tr>
+	  <tr><td>C1256</td><td>2</td></tr>
+	  <tr><td>C1234</td><td>2</td></tr>
+	  <tr><td>C1246</td><td>2</td></tr>
+	  <tr><td>C1267</td><td>2</td></tr>
+	  <tr><td>C3200</td><td>2</td></tr>
+	  <tr><td>C2570</td><td>1</td></tr>
+	  <tr><td>C1900</td><td>1</td></tr>
+	  <tr><td>C3700</td><td>1</td></tr>
+	  <tr><td>C8210</td><td>1</td></tr>
+	  <tr><td>C6100</td><td>1</td></tr>
+	  <tr><td>C2150</td><td>1</td></tr>
+	  <tr><td>C4200</td><td>1</td></tr>
+	  <tr><td>C2170</td><td>1</td></tr>
+	  <tr><td>C1236</td><td>1</td></tr>
+	  <tr><td>C4120</td><td>1</td></tr>
+	  <tr><td>C2561</td><td>1</td></tr>
+	  <tr><td>C1820</td><td>1</td></tr>
+	  <tr><td>C1728</td><td>1</td></tr>
+	  <tr><td>C2600</td><td>1</td></tr>
+	  <tr><td>C4500</td><td>1</td></tr>
+	  <tr><td>C1283</td><td>1</td></tr>
+	  <tr><td>C1248</td><td>1</td></tr>
+	  <tr><td>C5200</td><td>1</td></tr>
+	  <tr><td>C2190</td><td>1</td></tr>
+	  <tr><td>C2380</td><td>1</td></tr>
+	  <tr><td>C1580</td><td>1</td></tr>
+	  <tr><td>C1370</td><td>1</td></tr>
+	  <tr><td>C1570</td><td>1</td></tr>
+	  <tr><td>C1245</td><td>1</td></tr>
+	  <tr><td>C2500</td><td>1</td></tr>
+	  <tr><td>C1732</td><td>1</td></tr>
+   </tbody>
+</table>
+
+## Model Training Analysis
