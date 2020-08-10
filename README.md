@@ -56,11 +56,12 @@ The following feature have a small number of unique categorical values and there
    </tbody>
 </table>
 
-### Binnable Features
+### Bucketing  Features
 
-The features APPLICATION_TYPE and CLASSIFICATION have 17 and 71 unique categorical values respectively and have categorical values with low row counts. Therefore, these features are candidates for binning. Binning row count thresholds variables are created in the model training and testing workbook to enable vary the number of feature categories that are updated to the “Other” and to determine how the varying the binning threshold influences the accuracy of the neural network, machine learning model.
+The features APPLICATION_TYPE and CLASSIFICATION have 17 and 71 unique categorical values respectively and have categorical values with low row counts. Therefore, these features are candidates for bucketing . Bucketing row count thresholds variables are created in the model training and testing workbook to enable vary the number of feature categories that are updated to the “Other” and to determine how the varying the bucketing threshold influences the accuracy of the neural network, machine learning model.
 
 #### Feature APPLICATION_TYPE
+
 <table>
    <thead>
       <tr>
@@ -71,15 +72,15 @@ The features APPLICATION_TYPE and CLASSIFICATION have 17 and 71 unique categoric
       </tr>
    </thead>
    <tbody>
-	  <tr><td>T3</td><td>27037</td><td>T9</td><td>156</td></tr>
-	  <tr><td>T4</td><td>1542</td><td>T13</td><td>66</td</tr>
-	  <tr><td>T6</td><td>1216</td><td>T12</td><td>27</td></tr>
-	  <tr><td>T5</td><td>1173</td><td>T2</td><td>16</td></tr>
-	  <tr><td>T19</td><td>1065</td><td>T25</td><td>3</td></tr>
-	  <tr><td>T8</td><td>737</td><td>T14</td><td>3</td></tr>
-	  <tr><td>T7</td><td>725</td><td>T15</td><td>2</td></tr>
-	  <tr><td>T10</td><td>528</td><td>T29</td><td>2</td></tr>
-	  <tr><td></td><td><td>17</td><td>1</td></td>
+	  <tr><td>T3</td><td>27037</td><td>T13</td><td>66</td></tr>
+	  <tr><td>T4</td><td>1542</td><td>T12</td><td>27</td></tr>
+	  <tr><td>T6</td><td>1216</td><td>T2</td><td>16</td></tr>
+	  <tr><td>T5</td><td>1173</td><td>T25</td><td>3</td></tr>
+	  <tr><td>T19</td><td>1065</td><td>T14</td><td>3</td></tr>
+	  <tr><td>T8</td><td>737</td><td>T15</td><td>2</td></tr>
+	  <tr><td>T7</td><td>725</td><td>T29</td><td>2</td></tr>
+	  <tr><td>T10</td><td>528</td><td>T17</td><td>1</td></tr>
+	  <tr><td>T9</td><td>156</td><td></td><td><td></td>
    </tbody>
 </table>
 
