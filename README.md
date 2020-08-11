@@ -77,7 +77,7 @@ The following feature have a small number of unique categorical values and there
 
 The features APPLICATION_TYPE and CLASSIFICATION have 17 and 71 unique categorical values respectively and have categorical values with low row counts. Therefore, these features are candidates for bucketing . Bucketing row count thresholds variables are created in the model training and testing workbook to enable vary the number of feature categories that are updated to the “Other” and to determine how the varying the bucketing threshold influences the accuracy of the neural network, machine learning model.
 
-#### Feature APPLICATION_TYPE Catigorical Values (17) Distribution
+#### Feature APPLICATION_TYPE Catigorical Values Distribution (17)
 
 <table>
    <thead>
@@ -101,7 +101,7 @@ The features APPLICATION_TYPE and CLASSIFICATION have 17 and 71 unique categoric
    </tbody>
 </table>
 
-#### Feature CLASSIFICATION Catigorical Values Distribution
+#### Feature CLASSIFICATION Catigorical Values Distribution (71)
 
 <table>
    <thead>
