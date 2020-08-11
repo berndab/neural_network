@@ -2,10 +2,10 @@
 
 ## Overview
 
-Philanthropic organizations apply for funding and receive monetary grants to create and manage charitable projects that fulfill necessary community needs. These projects range from land and nature preservation to healthcare initiatives that improve community health. The type of organization that apply for these grants to fund their philanthropic project range from trusts to cooperatives. The goal of this project is to create a neural network based, machine learning model to predict the outcome of future projects funded by charitable grants.
+Philanthropic organizations apply for funding and receive monetary grants to create and manage charitable projects that fulfill necessary community needs. These projects range from land and nature preservation to healthcare initiatives that improve community health. The type of organization that apply for these grants range from trusts to cooperatives. The organization that give these grants must evaluate the history of the organization that is applying for these grant, the project that they have manages, and the outcomes of those projects in order to determine to accept or reject the grant application. The goal of this project is to create a neural network based, machine learning model to assist in this evaluation process.
 
 
-This model with be trained and tested on a data set that contains information on philanthropic organization that have managed charitable projects, the types of projects that they managed, the size of the grant issued to fund these projects, and the outcome of these projects. This neural network model will input features that describe the type of philanthropic organization and describe the type of projects the grant application is intended to fund , the will predict if the project will achieve a successful outcome.
+A neural network machine learning model was created to predict if a project associated with a grant requet  will be successful. This model will be trained and tested on a data set that contains information about philanthropic organization, types of projects that these charitable organization have managed, the size of the grant issued to fund these projects, and the outcome of these projects. When evaluating future grant proposals, features that describe philanthropic organization type, that descibe the project type thegrant application is intended to fund, and the amount requesting in the grant proposal, will be inputed into the neural network model to predict if the project will be successful. 
 
 
 ## Model Development Modular Design Approach
