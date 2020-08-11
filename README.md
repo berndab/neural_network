@@ -17,11 +17,11 @@ By separating the model development process steps into standalone notebook modul
 
 
 
-* Notebook 1:  grant_analysis.1.preprocess.feature_elimination.ipynb 
+* Notebook Module 1: **grant_analysis.1.preprocess.feature_elimination.ipynb**
    * Performs feature analysis and based on this feature analysis, performs feature elimination. The output of this process step is stored in a csv file
-* Notebook 2: grant_analysis.2.preprocess.one_hot_encoder.ipynb
+* Notebook Module 2: **grant_analysis.2.preprocess.one_hot_encoder.ipynb**
    * Encodes the data features that are not bucketed and remain constant for all model training and testing cycles
-* Notebook 3: grant_analysis.3.model_training.ipynb
+* Notebook Module 3: **grant_analysis.3.model_training.ipynb**
    * Uses bucketing threshold variables for each feature to allow for dynamically bucketing of each feature’s categorical values 
       * APPLICATION_TYPE
       * CLASSIFICATION
