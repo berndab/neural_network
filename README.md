@@ -5,36 +5,31 @@
 Philanthropic organizations apply for funding and receive monetary grants to create and manage charitable projects that fulfill necessary community needs. These projects range from land and nature preservation to healthcare initiatives that improve community health. The type of organization that apply for these grants to fund their philanthropic project range from trusts to cooperatives. The goal of this project is to create a neural network based, machine learning model to predict the outcome of future projects funded by charitable grants.
 
 
-This model with be trained and tested on a data set that contains information on philanthropic organization that have managed charitable projects, the types of projects that they managed, the size of the grant issued to fund these projects, and the outcome of these projects. This neural network model will input features that describe the type of philanthropic organization that apply for a grants and features that describe the type of projects that the grant request if for, the will predict if the project will achieve a successful outcome.
+This model with be trained and tested on a data set that contains information on philanthropic organization that have managed charitable projects, the types of projects that they managed, the size of the grant issued to fund these projects, and the outcome of these projects. This neural network model will input features that describe the type of philanthropic organization and describe the type of projects the grant application is intended to fund , the will predict if the project will achieve a successful outcome.
 
 
 ## Model Development Modular Design Approach
 
-A modular design approach was used to create the programing to execute the neural network model  development process and this process was segregated into three Jupyter Notebook modules The advantage of using a modular approach is that model development process steps that only need to be run once can run once if the process is separated into a standalone notebook module and the output of these this module can be saved to a static csv file to be used by the next model that execute a model development process step. If one Jupyter Notebook is used to contain the program code for each model process step, all the process steps must be run each time a model training and testing cycle is run. 
+A modular design approach was used to segregate the code that is required to execute each step in the model development processes. The model development process contains process steps that only need to be run once during model development. If all the process step code is contained in one Jupyter Notebook then all  the process steps must be run each time a model training and testing cycle is run, even the process steps that only needs to be run once line the feature analysis step and the feature elimination step. If the programing code for the process sets that only need to run once are separated into the own standalone notebook module only the training and testing notebook module needs to be executed to run a module training and testing cycle. Each model training and testing cycle will run faster because the it will be a standalone notebook model because it will not contain the code that executed the once time only process steps which are segregated into their own standalone module. Because the faster execution of model training and testing cycles, more cycles can be run during the model training and testing phase which would result in a more accurate predictive model.
 
+Note: Creating a standalone module for the for static features encoding process step allows for the development of addition static feature encoding modules that use different feature encoding algorithms such as LabelEncoder. It was not possible to create additional encoding modules using different encoding algorithms to determine if they improve the accuracy of the model within the time frame allotted to create this model.
 
-By separating the model development process steps into standalone notebook modules, only the training and testing cycle notebook module must be executed to run a module training and testing cycle. Because of this modular approach, the model testing and training cycles run faster because it is in its own standalone notebook module and more cycles to be run with different model parameters during the training and testing phase of model develpment 
-
-
+### Model Development Modules
 
 * Notebook Module 1: **grant_analysis.1.preprocess.feature_elimination.ipynb**
    * Performs feature analysis and based on this feature analysis, performs feature elimination. The output of this process step is stored in a csv file
 * Notebook Module 2: **grant_analysis.2.preprocess.one_hot_encoder.ipynb**
-   * Encodes the data features that are not bucketed and remain constant for all model training and testing cycles
+   * Encodes the features that are not bucketed and will remain constant for all model training and testing cycles using the one hot encoding algorithm
 * Notebook Module 3: **grant_analysis.3.model_training.ipynb**
-   * Uses bucketing threshold variables for each feature to allow for dynamically bucketing of each feature’s categorical values 
+   * Uses bucketing threshold variables for these features that enables executing model training and testing cycles with different bucketing configuratons 
       * APPLICATION_TYPE
       * CLASSIFICATION
-   * Uses a outlier filter threshold variable for this feature to allow for dynamically filters out upper range outlier
+   * Uses a outlier filter threshold variable for this feature that enables executing model training and testing cycles with different outlier filtering
       * ASK_AMT
    * Uses variables to set the neuron count for each hidden layer (if the variable is set to 0 the hidden layer is excluded 
    * Uses variables to set the activation function for the input, hidden, and the output neuron layers
    * Scales the ASK_AMT feature using the StandardScaler
 
-
-Note: separating the static features encoding process step to encode into it own standalone notebook enables creating different static feature encoding notebook modules that use different feature encoding algorithms. The encoding notebook module create uses the one-hot encoding algorithm to encode the static features. An additional encoding notebook module could be created using the scikit-learn LabelEncoder to investigate if this encoding method increases the accuracy of the model.
-
- 
 
 ## Analysis
 
