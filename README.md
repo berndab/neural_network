@@ -82,9 +82,9 @@ The features APPLICATION_TYPE and CLASSIFICATION have 17 and 71 unique categoric
 <table>
    <thead>
       <tr>
-         <th>Unique Categorial Value</th>
+         <th>Categorial Value</th>
          <th>Data Set Row Count</th>
-         <th>Unique Categorial Value</th>
+         <th>Categorial Value</th>
          <th>Data Set Row Count</th>
       </tr>
    </thead>
@@ -106,9 +106,9 @@ The features APPLICATION_TYPE and CLASSIFICATION have 17 and 71 unique categoric
 <table>
    <thead>
       <tr>
-         <th>Unique Classifier Value</th>
+         <th>Categorial Value</th>
          <th>Row Count</th>
-         <th>Unique Classifier Value</th>
+         <th>Categorial Value</th>
          <th>Row Count</th>
      </tr>
    </thead>
