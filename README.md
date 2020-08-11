@@ -34,8 +34,7 @@ Note: Creating a standalone module for the for static features encoding process 
 ## Analysis
 
 ### Feature Elimination
-The EIN and name fields were eliminated because they are identity field and are not consider model features. The STATUS and  SPECIAL_CONSIDERATIONS because they have no predictive value. These are  dichotomous feature where 99.99% of the data rows have a STATUS value of 1 and 99.92% of the data rows have a SPECIAL_CONSIDERATIONS	value of N. These features have no predictive value because almost 100% of the data rows have the same value. 
-
+The EIN and NAME features were eliminated because they are identity field and are not consider model features. The value distribution of the STATUS and SPECIAL_CONSIDERATIONS features were examined. These features are dichotomous values and 99.99% of the STATUS feature rows have a value of 1 and 99.92% of the SPECIAL_CONSIDERATIONS feature rows have a value N. Because these features have almost 100% of the data rows with the same value, they offer no predictive value to the model and were eliminated from the data set.
 
 ### Static Features
 
