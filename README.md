@@ -10,24 +10,31 @@ This model with be trained and tested on a data set that contains information on
 
 ## Model Development Modular Design Approach
 
-The neural network model development was designed to utilized three Jupyter Notebook that enabled a module approach model development
+A modular design approach was used to create the programing to execute the neural network model  development process and this process was segregated into three Jupyter Notebook modules The advantage of using a modular approach is that model development process steps that only need to be run once can run once if the process is separated into a standalone notebook module and the output of these this module can be saved to a static csv file to be used by the next model that execute a model development process step. If one Jupyter Notebook is used to contain the program code for each model process step, all the process steps must be run each time a model training and testing cycle is run. 
 
-1. The first notebook performs feature analysis and feature elimination 
-   * grant_analysis.preprocess.1.feature_elimination.ipynb
-2. The second notebook encodes the static data features that remain constant over all training runs 
-   * grant_analysis.preprocess.2.one_hot_encoder.ipynb
-3. The third notebook perform variable driven neural network model training using the following variables 
-    * grant_analysis.3.model_training.ipynb
-    * Bucketing threshold row count variable vary the category values bucketed for features 
-       * APPLICATION_TYPE
-       * CLASSIFICATION
-    * Dollar threshold variable used to filter out upper range outliers for the feature 
-       * ASK_AMT
-    * Neurons count variables used to set the neuron count for each neural network hidden layer
-    * Activation function variable to specify the activation function of each neural network layer
 
-    
-The advantage of this modular approach is that feature analysis and static feature encoding process do not have to be run each time a training run is executed which allows for faster training run and more runs to be executed. The feature analysis and elimination process and the static feature encoding process only has to be executed once because the output data of those processed remain static over all model training executions.  In addition, having the static features encoded in a standalone notebook allows the for different feature encoding algorithms to be used to encode feature data, such as label encoding, to test if the model using data encoded by a different encoding algorithms improved the accuracy of the model.  
+By separating the model development process steps into standalone notebook modules, only the training and testing cycle notebook module must be executed to run a module training and testing cycle. Because of this modular approach, the model testing and training cycles run faster because it is in its own standalone notebook module and more cycles to be run with different model parameters during the training and testing phase of model develpment 
+
+
+
+* Notebook 1:  grant_analysis.1.preprocess.feature_elimination.ipynb 
+   * Performs feature analysis and based on this feature analysis, performs feature elimination. The output of this process step is stored in a csv file
+* Notebook 2: grant_analysis.2.preprocess.one_hot_encoder.ipynb
+   * Encodes the data features that are not bucketed and remain constant for all model training and testing cycles
+* Notebook 3: grant_analysis.3.model_training.ipynb
+   * Uses bucketing threshold variables for each feature to allow for dynamically bucketing of each feature’s categorical values 
+      * APPLICATION_TYPE
+      * CLASSIFICATION
+   * Uses a outlier filter threshold variable for this feature to allow for dynamically filters out upper range outlier
+      * ASK_AMT
+   * Uses variables to set the neuron count for each hidden layer (if the variable is set to 0 the hidden layer is excluded 
+   * Uses variables to set the activation function for the input, hidden, and the output neuron layers
+   * Scales the ASK_AMT feature using the StandardScaler
+
+
+Note: separating the static features encoding process step to encode into it own standalone notebook enables creating different static feature encoding notebook modules that use different feature encoding algorithms. The encoding notebook module create uses the one-hot encoding algorithm to encode the static features. An additional encoding notebook module could be created using the scikit-learn LabelEncoder to investigate if this encoding method increases the accuracy of the model.
+
+ 
 
 ## Analysis
 
