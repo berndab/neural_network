@@ -2,8 +2,11 @@
 
 ## Overview
 
-Philanthropic organizations apply for funding and receive monetary grants to create and manage charitable projects that fulfill necessary community needs. These projects range from land and nature preservation to healthcare initiatives that improve community health. The type of organization that apply for these grants to fund their philanthropic project range from trusts to cooperatives. 
-The goal of this project is to create a neural network based, machine learning model to predict the outcome of future projects funded by charitable grants. This model with be based on a data set that contains information on philanthropic organization that have managed charitable projects, the types of projects that they managed, the size of the grant issued to fund these projects, and the outcome of these projects. This model will use features that describe the type of philanthropic organization applying for a grant and features that describe the type of project that grant will fund to predict the probable outcome of the project.
+Philanthropic organizations apply for funding and receive monetary grants to create and manage charitable projects that fulfill necessary community needs. These projects range from land and nature preservation to healthcare initiatives that improve community health. The type of organization that apply for these grants to fund their philanthropic project range from trusts to cooperatives. The goal of this project is to create a neural network based, machine learning model to predict the outcome of future projects funded by charitable grants.
+
+
+This model with be trained and tested on a data set that contains information on philanthropic organization that have managed charitable projects, the types of projects that they managed, the size of the grant issued to fund these projects, and the outcome of these projects. This neural network model will input features that describe the type of philanthropic organization that apply for a grants and features that describe the type of projects that the grant request if for, the will predict if the project will achieve a successful outcome.
+
 
 ## Model Development Modular Design Approach
 
