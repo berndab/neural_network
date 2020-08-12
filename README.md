@@ -2,17 +2,17 @@
 
 ## Overview
 
-Philanthropic organizations apply for funding and receive monetary grants to create and manage charitable projects that fulfill necessary community needs. These projects range from land preservation to healthcare initiatives. The type of organizations that apply for these grants range from trusts to cooperatives. In order to decide whether to issue a grant, a organization that funds grants must evaluate the type of organization that is applying for a grant, the types of projects that this organization has manages in the past, the outcomes of these projects, and the type of current program that they are seeking a grant for. In order to create a more efficient and more accurate grant evaluation process, this project will develop a neural network, machine learning model to assist in this evaluation process.
+Philanthropic organizations apply for funding and receive monetary grants to create and manage charitable projects that fulfill necessary community needs. These projects range from land preservation to healthcare initiatives. The type of organizations that apply for these grants range from trusts to cooperatives. In order to decide whether to issue a grant, a grant issuing organization must evaluate the type of organization that is applying for a grant, the types of projects that this organization has manages in the past, the outcomes of these projects, and the type of the current project that they are seeking a grant for. In order to create a more efficient and more accurate grant evaluation process, this project will develop a neural network, machine learning model to assist in the evaluation process.
 
 
-This model will be trained and tested on a data set that contains information about past charitable projects that were funded by grants. The data set contains entries for individual projects that include features that categorize the type of organization that managed the project, the type of project managed, the grant dollar value received for the project, and the outcome of the project. When new grant application are received these features collected in the grant application will be inputted into the neural network model to produce an outcome prediction for the proposed project.
+This model will be trained and tested on a data set that contains information about past charitable projects. The data set contains entries for individual projects that include features that categorize the type of organization that managed the project, the type of project managed, the grant value received for the project, and the outcome of the project. Then, when new grant application are received, the features that the model uses will be provided by the grant application and will be inputted into the neural network model to produce an outcome prediction for the proposed project.
 
  
 ## Model Development Modular Design Approach
 
-The model development process was designed using a modular approach. The machine learning model development process contains several process steps that only need to be executed once during model development, like feature analysis and feature elimination steps. In the typical one notebook approach, for machine learning model development, the code for all model development process steps reside in one Jupyter Notebook. All the process steps contained in the one notebook must be executed to run a single model training and testing cycle, even steps that only need to be run once. Segregating the programing code for single-execution, process development steps into their own standalone notebook modules, enables the segregation of the  training and testing process step code into its own standalone notebook module. To run training and testing cycles with different model parameters, only the standalone training and testing notebook needs to be executed. This enables faster execution of model training and testing cycles and allow for more cycles can be run in limited time available for training and testing during the model development lifecycle. Faster execution of training and testing cycles makes determining the model configuration that produces the most accurate model more efficient.
+The model development process was designed using a modular approach. The machine learning model development process has several process steps. Some of these process steps only need to be executed once during model development, such as the feature analysis and feature elimination steps. The typical approach for machine learning model development is to create on Jupyter Notebook that contains the code for all model development process steps. However, in order to execute a model training and testing cycle, all the process steps contained in the one notebook must be executed, even steps that only needed to be run once. Segregating the programing code for single-execution, process development steps into their own standalone notebook modules, enables the segregation of the model training and testing code into its own standalone notebook module. To run training and testing cycles with different model parameters, only the standalone training and testing notebook needs to be executed. This enables faster execution of training and testing cycles which intern allow for more cycles to be executed in the limited time available for training and testing phase of the model development lifecycle. Having the capability to execute more training and testing cycles decreases the time needed to determine the configuration parameters that produce the most accurate model.
 
-Furthermore, by using this modular approach, different standalone modules for static features encoding can be created that use different feature encoding algorithms to determine if these other encoding algorithms lead to a more accurate model. Finally, the code in the training and testing standalone notebook module can be exported to create a python file which intern can be used to do automated model testing which would shorten the overall model development life cycle.  
+Furthermore, by using this modular approach, multiple modules for the static features encoding process step can be created that use different encoding algorithms, such as the LabelEncoder algorithm. The accuracy of the model using the different encoding methods can be compared to determine which encoding algorithm produces the most accurate model. Finally, the code in the training and testing standalone notebook module can be exported to a python file which intern can be modified to automated the model testing process which would make the process task of  determining the most accurate model configuration more efficient.  
  
 
 ### Model Development Modules
@@ -36,9 +36,9 @@ Furthermore, by using this modular approach, different standalone modules for st
 
 ### Feature Elimination
 
-The EIN and NAME features were eliminated because they are identity field and are not considered predictive model features. 
+The EIN and NAME data features were eliminated from the data set because these fields contain identity information and are not considered predictive model features. 
 
-The value distributions of the STATUS and SPECIAL_CONSIDERATIONS features were examined. These features have dichotomous values of either 0 or 1 or T and F. For the STATUS feature, 99.99% of the rows in the dataset have a value of 1. For the SPECIAL_CONSIDERATIONS feature, 99.92% of the rows have a value N. Because almost 100% of the rows for these features have the same value, they offer no predictive value to the model and were eliminated from the data set.
+The value distributions of the STATUS and SPECIAL_CONSIDERATIONS features were examined. These features have dichotomous values of either 0 and 1 or T and F. For the STATUS feature, 99.99% of the rows in the dataset have a value of 1. For the SPECIAL_CONSIDERATIONS feature, 99.92% of the rows have a value N. Because almost 100% of the rows for these features have the same value, they offer no predictive value to the model and were eliminated from the data set.
 
 ### Static Features
 
@@ -73,7 +73,7 @@ The following feature have a small number of unique categorical values which do 
 
 ### Bucketing  Features
 
-The features APPLICATION_TYPE  has 17 unique categorical values while the CLASSIFICATION feature has 71 unique categorical values. Both features have unique categorical values with low row count in the data set. Therefore, these features are candidates for bucketing. The model training and testing notebook modules has bucketing row count thresholds variables defined for each feature to enable testing the model with different bucketing configuration to determine how these configurations affect the accuracy of the neural network, machine learning model.
+The APPLICATION_TYPE feature has 17 unique categorical values and the CLASSIFICATION feature has 71 unique categorical values. Both features have categorical values with low row count in the data set. Therefore, these features are candidates for bucketing. The model training and testing notebook module has a variable for each feature which sets the row count threshold for bucketing. Any category with a row count less than of equal to the threshold variable value will be bucketed into the "Other" category.  
 
 #### Feature APPLICATION_TYPE Catigorical Values Distribution (17)
 
@@ -152,7 +152,7 @@ The features APPLICATION_TYPE  has 17 unique categorical values while the CLASSI
 
 ### Feature with Potential Outliers
 
-The feature ASK_AMT has a very wide distribution of values, 75% of all values are exactly $5000 dollars. Yet the mean is $2,769,198.68, the standard deviation is $87,130,452.44, and the maximum value is $8,597,806,340.00. This indicate that the 25% of values in the top quartile are values exceeding higher than $50000 which are skewing the distribution of values for this feature. The model training and testing notebook module have an outlier exclusion variable that filters out any ASK_AMT value equal to or grater then the variable value. This enables the execution of training and testing cycles with ASK_AMT outliers filtered out of the training and testing data set to determine how removing outliers  affects accuracy of the model. 
+The ASK_AMT feature has a very wide distribution of values. 75% of all values are exactly $5000 dollars. Yet the mean is $2,769,198.68, the standard deviation is $87,130,452.44, and the maximum value is $8,597,806,340.00. This indicate that values in the upper quartile far exceed $50000 and skew the distribution of values for this feature. The model training and testing notebook module have an outlier filters threshold variable for this feature. Any value greater than or equal to the outlier filter threshold value will be removed from the data set. The allows the model to be tested different level out outlier filtering to see if removing outliers from the data set enable the model to be more accurate. 
 
 <table>
    <thead>
@@ -194,18 +194,17 @@ The feature ASK_AMT has a very wide distribution of values, 75% of all values ar
 </table>
 
 
-## Neural Network Model Predictive Performance Analysis
+## Model Predictive Performance Analysis
 
-The model training testing module used variables to configuration data included to train and test the neural network model 
-It also used valiable to set parameters used to create the neural network model.
+The model training and testing notebook module uses variables to configuration the data used to train and test the neural network model. It also uses variables to set neural network model configuration parameters.
 
-These variable were used to change the configuration of the test data set used for training and testing the neural network model
+The following variabes are used to configure the data set used for training and testing the neural network model
 * Feature Bucketing Parameters
   * Bucketing row count threshold for feature APPLICATION_TYPE
   * Bucketing row count threshold for feature CLASSIFICATION
 * Outlier filter parameters for feature ASK_AMT
 
-These variable were used to set the following model testing parameter
+The following variabes are used to set the various neural network model configuration parameters
 * Model Parameters
   * Hidden layer 1 neuron count
   * Hidden layer 1 activation function
@@ -217,19 +216,19 @@ These variable were used to set the following model testing parameter
 
 ### Feature Bucketing
 
-The model performed best when with a low bucketing threshold was used for the two features APPLICATION_TYPE and CLASSIFICATION where only the categorical values for these features that had row count in the single digits were converted to the catigory "Other". Using larger threshold variable to move catigorical values with row counts above 100 significantly reduced the model’s accuracy.
+The model performed best when using a low bucketing threshold for the features APPLICATION_TYPE and CLASSIFICATION which bucket catigories that only had row counts less thatn 10. Using larger threshold variable to bucket catigorical values with row counts above 100 significantly reduced the model’s accuracy.
 
 ### ASK_AMOUNT Feature Outlier Filtering
 
-Any attempt to filter even the most extream outlier values lowered the accuracy performance of the machine learning model. This may be because these upper 25% or the ask amout values offer significant predictive value to the model do to their high dollar amounts
+Any attempt to filter even the most extreme outlier values lowered the accuracy of the machine learning model. This may be because these upper quartile values have significant predictive value to the model do to their high dollar amounts.
 
 ### Neural Network Layer Activation Functions
 
-The most accurate model was the version that used the ReLU activation for the import and all hidden layers with the output layer using the sigmoid activation function. The tabh activation function used on in the input and hidden layers produced almost the same accuracy as using the ReLU function. All other activation function used produced a trained model with less accuracy. 
+The most accurate model used the ReLU activation for the import and hidden layers configurations and the sigmoid activation function for the output layer. The model accuracy when using the tanh activation function was used in the input and hidden layers configuration was slightly less accurate then when using the ReLU function . All other activation function to configure the input and hidden layers of the model produced a model that was much less accurate then the model using ReLu and tanh. 
 
 ### Adding Hidden Layers and Hidden Layer Neurons
 
-Adding more neurons to the hidden layer and more hidden layers continued to increase the models accuracy until it reached a pick trained accuracy of about 0.445 - 0.4470 using
+Adding more neurons to the hidden layer and more hidden layers continued to increase the models accuracy until it reached a peak trained accuracy of about 0.445 - 0.4470 using
 * hidden layer 1:  75 neurons
 * hidden layer 2: 150 neurons
 * hidden layr  3:  10 neurons
