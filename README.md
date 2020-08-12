@@ -196,7 +196,8 @@ The feature ASK_AMT has a very wide distribution of values, 75% of all values ar
 
 ## Neural Network Model Predictive Performance Analysis
 
-The model training testing module used variables to set the configuration parameters that change the configuration of the features data used to train and test the neural network model and changed the parameters used to create the neural network.
+The model training testing module used variables to configuration data included to train and test the neural network model 
+It also used valiable to set parameters used to create the neural network model.
 
 These variable were used to change the configuration of the test data set used for training and testing the neural network model
 * Feature Bucketing Parameters
@@ -216,7 +217,7 @@ These variable were used to set the following model testing parameter
 
 ### Feature Bucketing
 
-The model performed best when with a low bucketing threshold for the two features APPLICATION_TYPE and CLASSIFICATION where the value only eliminated categorical values for these features that had row count in the single digits. High bucketing threshold amount that removed categorical values with row count above 100 significantly reduced the model’s accuracy.
+The model performed best when with a low bucketing threshold was used for the two features APPLICATION_TYPE and CLASSIFICATION where only the categorical values for these features that had row count in the single digits were converted to the catigory "Other". Using larger threshold variable to move catigorical values with row counts above 100 significantly reduced the model’s accuracy.
 
 ### ASK_AMOUNT Feature Outlier Filtering
 
