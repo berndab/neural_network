@@ -2,17 +2,17 @@
 
 ## Overview
 
-Philanthropic organizations apply for funding and receive monetary grants to create and manage charitable projects that fulfill necessary community needs. These projects range from land preservation to healthcare initiatives . The type of organizations that apply for these grants range from trusts to cooperatives. In order to decide whether to issue a grant, a organization that gives grants must evaluate the type of organization that is applying for a grant, the types of projects that this organization has manages in the past, and the outcomes of these projects. The goal of this project is to create a neural network, machine learning model to assist in this evaluation process to make it more efficient and accurate.
+Philanthropic organizations apply for funding and receive monetary grants to create and manage charitable projects that fulfill necessary community needs. These projects range from land preservation to healthcare initiatives. The type of organizations that apply for these grants range from trusts to cooperatives. In order to decide whether to issue a grant, a organization that funds grants must evaluate the type of organization that is applying for a grant, the types of projects that this organization has manages in the past, the outcomes of these projects, and the type of current program that they are seeking a grant for. In order to create a more efficient and more accurate grant evaluation process, this project will develop a neural network, machine learning model to assist in this evaluation process.
 
 
-This model will be trained and tested on a data set that contains information about past charitable projects that were funded by grants. The data set will contain entries for each project that have features which categorize the type of organization that managed a specific project, the type of project managed, the dollar value of the grant issued, and the outcome of the project. New grant application will contain values for these features which will be inputted into the neural network model to produce an outcome prediction for the project proposed in the application.
+This model will be trained and tested on a data set that contains information about past charitable projects that were funded by grants. The data set contains entries for individual projects that include features that categorize the type of organization that managed the project, the type of project managed, the grant dollar value received for the project, and the outcome of the project. When new grant application are received these features collected in the grant application will be inputted into the neural network model to produce an outcome prediction for the proposed project.
 
  
 ## Model Development Modular Design Approach
 
-The model development process was designed using a modular approach. The machine learning model development process contains process steps that only need to be executed once during model development, like the feature analysis and the feature elimination steps. If the code for all model development process steps is contained in one Jupyter Notebook then all the process steps must be executed for each model training and testing cycle, even steps that only need to be run once. By segregating, the programing code for process development steps that only run once into their own standalone notebook modules and the data that they generate is stored in a csv file, then only the training and testing notebook module needs to be executed to run a training and testing cycle. Each model training and testing cycle will execute faster as a standalone notebook module without the code for preprocessing steps. Faster model training and testing cycles allow for more cycles can be run  making the process of determining the configuration that produces the most accurate model more efficient.
+The model development process was designed using a modular approach. The machine learning model development process contains several process steps that only need to be executed once during model development, like feature analysis and feature elimination steps. In the typical one notebook approach, for machine learning model development, the code for all model development process steps reside in one Jupyter Notebook. All the process steps contained in the one notebook must be executed to run a single model training and testing cycle, even steps that only need to be run once. Segregating the programing code for single-execution, process development steps into their own standalone notebook modules, enables the segregation of the  training and testing process step code into its own standalone notebook module. To run training and testing cycles with different model parameters, only the standalone training and testing notebook needs to be executed. This enables faster execution of model training and testing cycles and allow for more cycles can be run in limited time available for training and testing during the model development lifecycle. Faster execution of training and testing cycles makes determining the model configuration that produces the most accurate model more efficient.
 
-Furthermore, by using a modular approach, different standalone modules for static features encoding can be develop using different feature encoding algorithms to determine if these other encoding algorithms create a more accurate model. Finally, the code in the training and testing standalone notebook module can be exported to create a python file. This file then can be used to to do automated model testing shorting the overall model development life cycle.  
+Furthermore, by using this modular approach, different standalone modules for static features encoding can be created that use different feature encoding algorithms to determine if these other encoding algorithms lead to a more accurate model. Finally, the code in the training and testing standalone notebook module can be exported to create a python file which intern can be used to do automated model testing which would shorten the overall model development life cycle.  
  
 
 ### Model Development Modules
@@ -196,7 +196,13 @@ The feature ASK_AMT has a very wide distribution of values, 75% of all values ar
 
 ## Neural Network Model Predictive Performance Analysis
 
-The model training testing program used configurable variables to set the neural network model training parameters, to set the threshold row count value for features bucketing , and to to set the outlier filter threshold for ASK_AMT feature values
+The model training testing module used variables to set the configuration parameters that change the configuration of the features data used to train and test the neural network model and changed the parameters used to create the neural network.
+
+These variable were used to change the configuration of the test data set used for training and testing the neural network model
+* Feature Bucketing Parameters
+  * Bucketing row count threshold for feature APPLICATION_TYPE
+  * Bucketing row count threshold for feature CLASSIFICATION
+* Outlier filter parameters for feature ASK_AMT
 
 These variable were used to set the following model testing parameter
 * Model Parameters
@@ -207,10 +213,6 @@ These variable were used to set the following model testing parameter
   * Hidden layer 3 neuron count
   * Hidden layer 3 activation function
   * Model training epochs
-* Feature Bucketing Parameters
-  * Bucketing row count threshold for feature APPLICATION_TYPE
-  * Bucketing row count threshold for feature CLASSIFICATION
-* Outlier filter parameters for feature ASK_AMT
 
 ### Feature Bucketing
 
