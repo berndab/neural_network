@@ -2,31 +2,32 @@
 
 ## Overview
 
-Philanthropic organizations apply for funding and receive monetary grants to create and manage charitable projects that fulfill necessary community needs. These projects range from land preservation to healthcare initiatives . The type of organizations that apply for these grants range from trusts to cooperatives. In order to decide whether to issue a grant, a organization the give grants must evaluate the type of organization that is applying for a grant, the types of projects that this organization has manages in the past, and the outcomes of these projects. The goal of this project is to create a neural network based, machine learning model to assist in this evaluation process to make it more efficient and accurate.
+Philanthropic organizations apply for funding and receive monetary grants to create and manage charitable projects that fulfill necessary community needs. These projects range from land preservation to healthcare initiatives . The type of organizations that apply for these grants range from trusts to cooperatives. In order to decide whether to issue a grant, a organization that gives grants must evaluate the type of organization that is applying for a grant, the types of projects that this organization has manages in the past, and the outcomes of these projects. The goal of this project is to create a neural network, machine learning model to assist in this evaluation process to make it more efficient and accurate.
 
 
-This neural network machine learning model will be trained and tested on a data set that contains information about past charitable projects that were funded by grants. This data set contains information on past charitable projects. The data for each project has features that categorize the type of organization that managed a specific project, the type of project managed, the dollar value of the grant issued for this project, and the outcome of this project. The model  will then be used in the grant evaluation process. The grant application will have the values for these features which will be inputted into the model to produce an outcome prediction for the project proposed in the application.
+This model will be trained and tested on a data set that contains information about past charitable projects that were funded by grants. The data set will contain entries for each project that have features which categorize the type of organization that managed a specific project, the type of project managed, the dollar value of the grant issued, and the outcome of the project. New grant application will contain values for these features which will be inputted into the neural network model to produce an outcome prediction for the project proposed in the application.
 
-
+ 
 ## Model Development Modular Design Approach
 
-The model development process was designed using a modular approach. The model development process contains process steps that only need to be executed once during model development, like the feature analysis and the feature elimination steps. If the code for all model devlopment process steps is contained in one Jupyter Notebook then all the process steps must be executed each time a model training and testing cycle is run, even steps that only need to be run once.  If the programing code for these run one time only process steps are separated into their own standalone notebook modules, then only the training and testing notebook module needs to be executed to run a training and testing cycle. Each model training and testing cycle will execute faster as a standalone notebook module without the code for preprocessing steps. Faster model training and testing cycles allow for more cycles can be run more combinations of model configurations to to be evaluated to fine the configuration that produces the most accurate model.
+The model development process was designed using a modular approach. The machine learning model development process contains process steps that only need to be executed once during model development, like the feature analysis and the feature elimination steps. If the code for all model development process steps is contained in one Jupyter Notebook then all the process steps must be executed for each model training and testing cycle, even steps that only need to be run once. By segregating, the programing code for process development steps that only run once into their own standalone notebook modules and the data that they generate is stored in a csv file, then only the training and testing notebook module needs to be executed to run a training and testing cycle. Each model training and testing cycle will execute faster as a standalone notebook module without the code for preprocessing steps. Faster model training and testing cycles allow for more cycles can be run  making the process of determining the configuration that produces the most accurate model more efficient.
 
-Furthermore, by using a modular approach, different standalone modules for static features encoding can be develop using different feature encoding algorithms to determine if these other encoding algorithms create a more accurate model. Finally, the code in the training and testing standalone notebook module can be exported to create a python file. This file can be used to to do automated model testing shorting the overall model development life cycle.  
+Furthermore, by using a modular approach, different standalone modules for static features encoding can be develop using different feature encoding algorithms to determine if these other encoding algorithms create a more accurate model. Finally, the code in the training and testing standalone notebook module can be exported to create a python file. This file then can be used to to do automated model testing shorting the overall model development life cycle.  
+ 
 
 ### Model Development Modules
 
 * Notebook Module 1: **grant_analysis.1.preprocess.feature_elimination.ipynb**
-   * Performs feature analysis and based on this feature analysis, performs feature elimination. The output of this process step is stored in a csv file
+   * Performs feature analysis and feature elimination based on the results of the feature analysis step. The output of this process step is stored in a csv file
 * Notebook Module 2: **grant_analysis.2.preprocess.one_hot_encoder.ipynb**
-   * Encodes the features that are not bucketed and will remain constant for all model training and testing cycles using the one hot encoding algorithm
+   * Encodes the features, using one-hot encoding, that do not need to be bucketed and will remain constant for all model training and testing cycles
 * Notebook Module 3: **grant_analysis.3.model_training.ipynb**
-   * Uses bucketing threshold variables for these features that enables executing model training and testing cycles with different bucketing configuratons 
+   * Uses bucketing threshold variables for these features that enables executing model training and testing cycles with different bucketing configurations 
       * APPLICATION_TYPE
       * CLASSIFICATION
-   * Uses a outlier filter threshold variable for this feature that enables executing model training and testing cycles with different outlier filtering
+   * Uses a upper range, outlier filter threshold variable for this feature that enables executing model training and testing cycles with different outlier filtering of upper range values
       * ASK_AMT
-   * Uses variables to set the neuron count for each hidden layer (if the variable is set to 0 the hidden layer is excluded 
+   * Uses variables to set the neuron count for each hidden layer, If the variable is set to 0 the hidden layer is excluded from the model
    * Uses variables to set the activation function for the input, hidden, and the output neuron layers
    * Scales the ASK_AMT feature using the StandardScaler
 
@@ -34,13 +35,14 @@ Furthermore, by using a modular approach, different standalone modules for stati
 ## Analysis
 
 ### Feature Elimination
-The EIN and NAME features were eliminated because they are identity field and are not considered model features. 
 
-The value distributions of the STATUS and SPECIAL_CONSIDERATIONS features were examined. These features are dichotomous values and 99.99% of the STATUS rows have a value of 1 and 99.92% of the SPECIAL_CONSIDERATIONS rows have a value N. Because almost 100% of the rows for these features have the same value, they offer no predictive value to the model and were eliminated from the data set.
+The EIN and NAME features were eliminated because they are identity field and are not considered predictive model features. 
+
+The value distributions of the STATUS and SPECIAL_CONSIDERATIONS features were examined. These features have dichotomous values of either 0 or 1 or T and F. For the STATUS feature, 99.99% of the rows in the dataset have a value of 1. For the SPECIAL_CONSIDERATIONS feature, 99.92% of the rows have a value N. Because almost 100% of the rows for these features have the same value, they offer no predictive value to the model and were eliminated from the data set.
 
 ### Static Features
 
-The following feature have a small number of unique categorical values and therefore, do not require binning. These features’ unique categorical value will remain constant when training and testing the neural network. Therefore, they can be encoded once using one-hot encoding and stored in a file.
+The following feature have a small number of unique categorical values which do not require bucketing and can be encoded as is using one-hot encoding.
 
 <table>
    <thead>
@@ -71,7 +73,7 @@ The following feature have a small number of unique categorical values and there
 
 ### Bucketing  Features
 
-The features APPLICATION_TYPE and CLASSIFICATION have 17 and 71 unique categorical values respectively and have categorical values with low row counts. Therefore, these features are candidates for bucketing . Bucketing row count thresholds variables are created in the model training and testing workbook to enable vary the number of feature categories that are updated to the “Other” and to determine how the varying the bucketing threshold influences the accuracy of the neural network, machine learning model.
+The features APPLICATION_TYPE  has 17 unique categorical values while the CLASSIFICATION feature has 71 unique categorical values. Both features have unique categorical values with low row count in the data set. Therefore, these features are candidates for bucketing. The model training and testing notebook modules has bucketing row count thresholds variables defined for each feature to enable testing the model with different bucketing configuration to determine how these configurations affect the accuracy of the neural network, machine learning model.
 
 #### Feature APPLICATION_TYPE Catigorical Values Distribution (17)
 
@@ -150,7 +152,7 @@ The features APPLICATION_TYPE and CLASSIFICATION have 17 and 71 unique categoric
 
 ### Feature with Potential Outliers
 
-The feature ASK_AMT has a very wide distribution of values, 75% of all values are amounts of $5000 dollar. Yet the mean is $2,769,198.68, the standard deviation is $87,130,452.44, and the maximum value is $8,597,806,340.00. This indicate that there of the 25% of values in the top quartile which is 8,5745 values, there is a large number of ask amount values that are in the millions and billions which skews the distribution of values for this feature. The model testing process will be designed to excludes a portion of these values in the top 25% which may be considered outliers to determine how removing these outlier values affects the accuracy of the model's prediction.
+The feature ASK_AMT has a very wide distribution of values, 75% of all values are exactly $5000 dollars. Yet the mean is $2,769,198.68, the standard deviation is $87,130,452.44, and the maximum value is $8,597,806,340.00. This indicate that the 25% of values in the top quartile are values exceeding higher than $50000 which are skewing the distribution of values for this feature. The model training and testing notebook module have an outlier exclusion variable that filters out any ASK_AMT value equal to or grater then the variable value. This enables the execution of training and testing cycles with ASK_AMT outliers filtered out of the training and testing data set to determine how removing outliers  affects accuracy of the model. 
 
 <table>
    <thead>
