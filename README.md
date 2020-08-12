@@ -198,13 +198,13 @@ The ASK_AMT feature has a very wide distribution of values. 75% of all values ar
 
 The model training and testing notebook module uses variables to configuration the data used to train and test the neural network model. It also uses variables to set neural network model configuration parameters.
 
-The following variabes are used to configure the data set used for training and testing the neural network model
+The following variables are used to configure the data set used for training and testing the neural network model
 * Feature Bucketing Parameters
   * Bucketing row count threshold for feature APPLICATION_TYPE
   * Bucketing row count threshold for feature CLASSIFICATION
 * Outlier filter parameters for feature ASK_AMT
 
-The following variabes are used to set the various neural network model configuration parameters
+The following variables are used to set the various neural network model configuration parameters
 * Model Parameters
   * Hidden layer 1 neuron count
   * Hidden layer 1 activation function
@@ -216,7 +216,7 @@ The following variabes are used to set the various neural network model configur
 
 ### Feature Bucketing
 
-The model performed best when using a low bucketing threshold for the features APPLICATION_TYPE and CLASSIFICATION which bucket catigories that only had row counts less thatn 10. Using larger threshold variable to bucket catigorical values with row counts above 100 significantly reduced the model’s accuracy.
+The model performed best when using a low bucketing threshold for the features APPLICATION_TYPE and CLASSIFICATION which bucket categories that had row counts less than or equal to 10. Using larger threshold values to bucket categorical values significantly reduced the model’s accuracy.
 
 ### ASK_AMOUNT Feature Outlier Filtering
 
@@ -228,22 +228,25 @@ The most accurate model used the ReLU activation for the import and hidden layer
 
 ### Adding Hidden Layers and Hidden Layer Neurons
 
-Adding more neurons to the hidden layer and more hidden layers continued to increase the models accuracy until it reached a peak trained accuracy of about 0.445 - 0.4470 using
+Adding more neurons to the hidden layer and more hidden layers continued to increase the models accuracy until it reached a peak trained accuracy of about 0.7461 using
 * hidden layer 1:  75 neurons
 * hidden layer 2: 150 neurons
-* hidden layr  3:  10 neurons
+* hidden layer  3:  10 neurons
 
-Any additional neurons cause the model to become overfitted which was indicated by a higher training accuracy and a lower testing accuracy.
+Model testing accuracy varied between 0.72 and 0.73
+
+Adding additional neurons cause the model to become overfitted which was indicated by a higher training accuracies and a lower testing accuracies.
 
 ### Epochs
 
-The training accuracy and testing accuracy of the model peaks when using 200 epoch to train the model. The model started to become overfit when using more than 200 epoch which was indicated by a higher training accuracy and a lower testing accuracy. 
+The training and testing accuracy of the model peaks at about 200 epochs used to train the model. As epochs increased, the model became overfitted when which was indicated by higher training accuracies and a lower testing accuracies.
+
 
 ### Conclusion
 
-The peak model training accuracy that was achieved was 0.75 in some epoch executions while the peak testing accuracy that was achieved by varying the model training parameters of the model was 0.733. The accuracy of the model seems to be limited because the available features to train the model had weak predictive value. 
+The peak model training accuracy that was achieved was 0.7461 while the peak testing accuracy that was achieved was 0.733. The accuracy of the model seems to be limited because the available features to train the model have weak predictive value. 
 
-Because of the week predictive value of the data features,  a random forest model may produce better predictive accuracy since random forest machine learning model is a weak learning model that creates many decision trees based on random subsets of the training data. The collection of randomly generated decision trees when combined may produce predictive model with a higher accuracy than the neural network model that was tested. 
+Because of the week predictive value of the data features,  a random forest model may produce better predictive accuracy since random forest machine learning model is a weak learning model that creates many decision trees based on random subsets of the training data. The collection of randomly generated decision trees, when combined, may produce a model with more accuracy.
 
 
 
