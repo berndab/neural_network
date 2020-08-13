@@ -224,22 +224,22 @@ Any attempt to filter even the most extreme outlier values lowered the accuracy 
 
 ### Neural Network Layer Activation Functions
 
-The most accurate model used the ReLU activation for the import and hidden layers configurations and the sigmoid activation function for the output layer. The model accuracy when using the tanh activation function was used in the input and hidden layers configuration was slightly less accurate then when using the ReLU function . All other activation function to configure the input and hidden layers of the model produced a model that was much less accurate then the model using ReLu and tanh. 
+The most accurate model used the ReLU activation for the import and hidden layers configurations and the sigmoid activation function for the output layer. The model accuracy when using the tanh activation function was used in the input and hidden layers configuration was slightly less accurate then when the ReLU function . All other activation function used for the input and hidden layers produced a model that was much less accurate then the model using ReLu and tanh. 
 
 ### Adding Hidden Layers and Hidden Layer Neurons
 
 Adding more neurons to the hidden layer and more hidden layers continued to increase the models accuracy until it reached a peak trained accuracy of about 0.7461 using
 * hidden layer 1:  75 neurons
 * hidden layer 2: 150 neurons
-* hidden layer  3:  10 neurons
+* hidden layer 3:  10 neurons
 
 Model testing accuracy varied between 0.72 and 0.73
 
-Adding additional neurons cause the model to become overfitted which was indicated by a higher training accuracies and a lower testing accuracies.
+Adding additional neurons cause the model to become overfitted which was indicated by a increasing training accuracy trend and a decreasing testing trend.
 
 ### Epochs
 
-The training and testing accuracy of the model peaks at about 200 epochs used to train the model. As epochs increased, the model became overfitted when which was indicated by higher training accuracies and a lower testing accuracies.
+The training and testing accuracy of the model peaked at about 200 epochs used to train the model. As epochs were increased, the model became overfitted which was indicated by increasing training accuracy trend and a decreasing testing accuracy trend.
 
 
 ### Conclusion
