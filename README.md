@@ -13,7 +13,24 @@ This model will be trained and tested on a data set that contains information ab
 The model development process was designed using a modular approach. The machine learning model development process has several process steps. Some of these process steps only need to be executed once during model development, such as the feature analysis and feature elimination steps. The typical approach for machine learning model development is to create on Jupyter Notebook that contains the code for all model development process steps. However, in order to execute a model training and testing cycle, all the process steps contained in the one notebook must be executed, even steps that only needed to be run once. Segregating the programing code for single-execution, process development steps into their own standalone notebook modules, enables the segregation of the model training and testing code into its own standalone notebook module. To run training and testing cycles with different model parameters, only the standalone training and testing notebook needs to be executed. This enables faster execution of training and testing cycles which intern allow for more cycles to be executed in the limited time available for training and testing phase of the model development lifecycle. Having the capability to execute more training and testing cycles decreases the time needed to determine the configuration parameters that produce the most accurate model.
 
 Furthermore, by using this modular approach, multiple modules for the static features encoding process step can be created that use different encoding algorithms, such as the LabelEncoder algorithm. The accuracy of the model using the different encoding methods can be compared to determine which encoding algorithm produces the most accurate model. Finally, the code in the training and testing standalone notebook module can be exported to a python file which intern can be modified to automated the model testing process which would make the process task of  determining the most accurate model configuration more efficient.  
- 
+
+## Technical Summary
+
+### Python Modules and Classes
+
+|Module                             |Class                              |Module                             |Class                              |
+|-----------------------------------|-----------------------------------|-----------------------------------|-----------------------------------|
+|**Environment**                    |                                   |**Feature Encoding Algorithms**    |                                   |
+|Anaconda                           |                                   |sklearn.preprocessing              |OneHotEncoder                      |
+|**Application**                    |                                   |**Feature Scaling Algorithms**     |                                   |
+|Jupyter Notebook                   |                                   |sklearn.preprocessing              |StandardScaler                     |
+|**Data Analysis**                  |                                   |sklearn.preprocessing              |MinMaxScaler                       |
+|pandas                             |                                   |**Utils**                          |                                   |
+|numpy                              |                                   |sklearn.model_selection            |train_test_split                   |
+|**Model Components**               |                                   |                                   |                                   |
+|tensorflow.keras.models            |Sequential                         |                                   |                                   |
+|tensorflow.keras.                  |Dense                              |                                   |                                   |
+|tensorflow.keras.callbacks         |ModelCheckpoint                    |                                   |                                   |
 
 ### Model Development Modules
 
