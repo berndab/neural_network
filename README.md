@@ -20,7 +20,7 @@ Furthermore, by using this modular approach, multiple modules for the static fea
 
 |Module                             |Class                              |Module                             |Class                              |
 |-----------------------------------|-----------------------------------|-----------------------------------|-----------------------------------|
-|**Environment**                    |                                   |**Feature Encoding Algorithms**    |                                   |
+|**Environment**                    |                                   |**Feature Encoding Algorithm**     |                                   |
 |Anaconda                           |                                   |sklearn.preprocessing              |OneHotEncoder                      |
 |**Application**                    |                                   |**Feature Scaling Algorithms**     |                                   |
 |Jupyter Notebook                   |                                   |sklearn.preprocessing              |StandardScaler                     |
